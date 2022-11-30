@@ -1,0 +1,206 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;}
+li{list-style: none;}
+a{text-decoration: none;    /* a태그는 원래 파란색 글자에 밑줄이 쳐져 있는데 그걸 없앰 */
+  color: #333;}
+.clearfix:after{
+    content: ""; clear: both; display: block; 
+}
+
+#wrap{width: 1000px; margin: auto;}
+
+#header{}
+#header h1{
+    float: left; width: 110px;
+    padding: 15px 0 10px;
+}
+#header h1 a{}
+#header h1 a img{width: 100%;}
+
+#header .nav{float: right;}
+#header .nav ul{}
+#header .nav ul li{
+    position: relative;     /* submenu를 absolute 만들었으므로 부모인 li에 relative를 씀. */
+    float: left;
+    width: 140px;
+    text-align: center;
+    background-color: #ddd;
+}
+#header .nav ul li a{
+    display: block;         /* 메뉴창에서 a태그는 반드시 블록요소로 바꿔야 함. */
+    /* padding: 위 좌우 아래 | 위 오른쪽 아래 왼쪽*/
+    padding: 24px 20px 20px; 
+    transition: 0.3s;     /* 이미지가 부드럽게 전환되도록 원태그에 시간을 부여.  */
+}   
+#header .nav ul li a:hover{
+    background-color: #ccc;
+}
+
+#header .nav ul li ul.submenu{
+    display: none;
+    position: absolute;
+    left: 0; top: 66px;
+    z-index: 10;          /* 메뉴창에서 슬라이드 다운 되는게 보이게 함. */
+}
+#header .nav ul li ul.submenu li{}
+#header .nav ul li ul.submenu li a{
+    padding: 18px; background-color: #888;
+    color: #dbdbdb;
+}
+#header .nav ul li ul.submenu li a:hover{
+    background-color: #666;
+}
+
+/* banner */
+#banner{overflow: hidden;}
+#banner .slideList{
+    position: relative;
+    width: 3000px;
+}
+#banner .slideList .slideImg{
+    float: left;     /* --> slideList에 clearfix 삽입 */
+    width: 1000px;
+    position: relative;
+}
+#banner .slideList .slideImg h2{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0,0,0,0.4);
+    color: #fff; 
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+#banner .slideList .slideImg img{
+    width: 100%;
+}
+
+/* content1 */
+#content1{margin-top: 20px;}
+#content1 .title{font-size: 22px; padding-bottom: 5px;}  /* margin-bottom 써도 무관 */
+#content1 .desc{
+    font-size: 14px; color: #666; padding-bottom: 15px;
+}
+
+#content1 .left{
+    float: left; width: 49%;
+    /* background-color: #f2f2f2;
+    background-image: url(images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 80px; */
+    /* = background: color image repeat position/size; 사이즈는 보통 따로 적는 경우가 많음*/
+    background: #f2f2f2 url(images/bg1.jpg) no-repeat right 20px center/80px;
+    padding: 20px; box-sizing: border-box;
+}
+#content1 .left .btn{
+    background: url(images/icon1.jpg) no-repeat left top;
+    background-size: 20px;
+    padding-left: 25px;  /* 글자를 오른쪽으로 밀어야 함 */
+}
+
+#content1 .right{
+    float: right; width: 49%;
+    background: #f2f2f2 url(images/bg2.jpg) no-repeat right 20px center;
+    background-size: 80px;
+    padding: 20px; box-sizing: border-box;
+}
+#content1 .right .btn{
+    background: url(images/icon2.jpg) no-repeat left top;
+    background-size: 20px;
+    padding-left: 25px;
+}
+#content1 .right .btn em{    /* em은 원래부터 기울임체 */
+    font-style: normal;
+    font-size: 13px;
+    color: #999;
+}
+
+#content2{
+    margin-top: 30px;
+}
+.tab_menu{}
+.tab_menu .tab_btn ul{}
+.tab_menu .tab_btn ul li{
+    float: left;  /* --> 부모인 ul에 clearfix */
+    margin-right: 15px;
+}
+.tab_menu .tab_btn ul li a{
+    display: block;
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #999;
+}
+.tab_menu .tab_btn ul li.active a{
+    color: #000;
+}
+.tab_menu .tab_cont{}
+.tab_menu .tab_cont .best{}
+.tab_menu .tab_cont div figure{  /* div 안에 있는 figure 6개를 동시에 부르고 싶을 때 */
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+}
+.tab_menu .tab_cont div figure:last-child{  /* 각각의 div 안에 있는 figure의 막내들을 부르고 싶을 때 */
+    margin-right: 0;
+}
+.tab_menu .tab_cont div img{
+    width: 100%;
+}
+.tab_menu .tab_cont div figcaption{}
+
+/* footer */
+#footer{
+    background-color: #202020;  /* best와 view에 clearfix 설정했는지 확인 */
+    margin-top: 30px;
+    padding: 20px;}
+#footer h2{
+    width: 150px;
+    float: left;   /* footer에 clearfix 설정 */
+}
+#footer h2 img{width: 100%;}
+#footer .foot{
+    float: right;}
+#footer .foot ul{padding-bottom: 10px;}
+#footer .foot ul li{display: inline;}  /* 인라인요소는 옆으로 정렬 */
+#footer .foot ul li a{
+    color: #fff; padding-right: 10px;
+}
+#footer .foot address{      /* address는 기울임체 */ 
+    color: #ccc;
+    font-style: normal;
+}
+
+
+
+/* 팝업 */
+.layer-bg{
+    display: none;
+    position: fixed;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+.layer-bg .layer{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);  /* --> layer를 정중앙에  놓기 위해 */
+    width: 500px; height: 500px;
+    background-color: #fff;
+    padding: 20px;
+}
+.layer-bg .layer h2{}
+.layer-bg .layer .close{
+    position: absolute;
+    right: 20px; bottom: 20px;
+}
+
+.layer-bg .layer .video{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;  /* 참고로 부모인 layer의 width는 500px */
+}
+.layer-bg .layer .video video{
+    width: 100%;
+}
